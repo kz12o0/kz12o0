@@ -1,0 +1,106 @@
+version: 2
+updates:
+  # master branch
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    commit-message:
+      prefix: "Update:"
+    target-branch: "master"
+    labels:
+      - "dependencies"
+      - "javascript"
+    allow:
+      - dependency-type: "direct"
+    ignore:
+      - dependency-name: "sodium-native"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "p-queue"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "p-event"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "i18next"
+        update-types:
+          - "version-update:semver-major"
+    groups:
+      oceanic:
+        patterns:
+          - "oceanic.js"
+          - "@mtripg6666tdr/oceanic-command-resolver"
+
+  # v1-lts branch
+  # - package-ecosystem: npm
+  #   directory: "/"
+  #   schedule:
+  #     interval: "daily"
+  #     time: "09:00"
+  #     timezone: "Asia/Tokyo"
+  #   commit-message:
+  #     prefix: "Update:"
+  #   target-branch: "v1-lts-lol"
+  #   labels:
+  #     - "dependencies"
+  #     - "javascript"
+  #     - "target:v1"
+  #   allow:
+  #     - dependency-type: "direct"
+  #   ignore:
+  #     - dependency-name: "discord.js"
+  #       update-types:
+  #         - "version-update:semver-major"
+  #     - dependency-name: "soundcloud.ts"
+  #       update-types:
+  #         - "version-update:semver-major"
+  #     - dependency-name: "https-proxy-agent"
+  #       update-types:
+  #         - "version-update:semver-major"
+
+  # documentation site (master)
+  - package-ecosystem: npm
+    directory: "/docs/"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    commit-message:
+      prefix: "Update(docs):"
+    target-branch: "master"
+    labels:
+      - "dependencies"
+      - "javascript"
+      - "scope:docs"
+    allow:
+      - dependency-type: "direct"
+    ignore:
+      - dependency-name: "@mdx-js/react"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "react"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "react-dom"
+        update-types:
+          - "version-update:semver-major"
+      - dependency-name: "prism-react-renderer"
+        update-types:
+          - "version-update:semver-major"
+
+  # actions (master)
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: "daily"
+      time: "09:00"
+      timezone: "Asia/Tokyo"
+    commit-message:
+      prefix: "Update(action):"
+    target-branch: "master"
+    labels:
+      - "dependencies"
+      - "github_actions"
